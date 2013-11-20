@@ -12,8 +12,6 @@ class ItemUsersController < ApplicationController
     @item_user = ItemUser.new
   end
 
-
-
   # POST /item_users
   # POST /item_users.json
   def create
@@ -51,7 +49,6 @@ def update
  end
 
 end
-
 
   # DELETE /item_users/1
   # DELETE /item_users/1.json

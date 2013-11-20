@@ -8,7 +8,11 @@ gem "twitter-bootstrap-rails"
 #Set Twitter Bootstrap Gem#
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg', group: :production, require: false
+
+gem 'sqlite3', group: [:development, :test]  , require: false
+
+gem 'rails_12factor'
 
 gem 'devise'
 
