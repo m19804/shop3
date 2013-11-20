@@ -1,0 +1,31 @@
+<h1> Заказ № <%= @order.id %></h1>
+<p> Полная сумма: <%= @order.price %> рублей.</p>
+<p>Дата: <%= @order.created_at %></p>
+<h3> Товары </h3>
+
+<table class = "table">
+<thead>
+
+<tr>
+  <th>Товар </th>
+  <th>Кол-во </th>
+  <th>Цена за штуку</th>
+
+
+</tr>
+</thead>
+
+<tbody>
+
+<% @order.item_orders.each do |item_order| %>
+
+    <tr>
+      <td><%= item_order.item.name %> </td>
+      <td><%= item_order.quantity %> </td>
+      <td><%= item_order.item.price %>  рублей </td>
+
+    </tr>
+<%end%>
+
+</tbody>
+</table>

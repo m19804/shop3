@@ -1,0 +1,67 @@
+
+ <h1><%= @item.name %></h1>
+
+ <%= image_tag @item.photo(:medium) %>
+
+
+ <% if @item.category.present? %>
+     <p><%= @item.category.name %></p>
+ <% end %>
+
+
+ <p>
+   <strong>Рейтинг:</strong>
+   <% if @item.raiting %>
+       <%= "%.2f" % @item.raiting %>
+   <% else %>
+       еще нет рейтинга
+   <% end %>
+ </p>
+
+<p>
+  <strong>Цена:</strong>
+  <%= @item.price %>
+  руб.
+
+</p>
+ <% if @item.special.present? %>
+     <p class="alert alert-success"><%= @item.special %></p>
+
+ <% end %>
+
+ <% if signed_in? %>
+     <%= simple_form_for @item_user do |f| %>
+         <%= f.input :item_id, as: :hidden %>
+         <%= f.submit "Добавить в корзину", class: "btn" %>
+  <% end %>
+
+          <%= link_to 'Редактировать', edit_item_path(@item), class:"btn" %>
+     <% end %>
+ <% if @item.category.present? %>
+     <% link_to "Вернуться", @item.category, class: "btn" %>
+         <% else %>
+         <%= link_to "Back", @item.category, class: "btn" %>
+
+ <% end %>
+
+<%= link_to 'Вернуться', items_path %>
+
+ <h3> Комментарии</h3>
+ <%= render "comments/form" %>
+
+ <% @item.comments.each do |comment|  %>
+
+     <div>
+
+       <div class="author"><% comment.name %></div>
+        #<span> class="</span>
+       <div class="message"><%= comment.message %></div>
+
+     </div>
+     <% end %>
+
+
+ <p> Тут будет форма</p>
+
+
+ <p>Тут будет список комментов</p>

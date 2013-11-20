@@ -1,0 +1,35 @@
+<h1>Товары</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Raiting</th>
+      <th>Price</th>
+      <% if signed_in? %>
+        <th></th>
+        <th></th>
+      <% end   %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= link_to item.name, item %></td>
+        <td><%= item.raiting %></td>
+        <td><%= item.price %></td>
+
+        <% if signed_in? %>
+           <td><%= link_to 'Редактировать', edit_item_path(item) %></td>
+           <td><%= link_to 'Удалить', item, method: :delete, data: { confirm: 'Точно?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if signed_in? %>
+ <%= link_to 'Добавить товар', new_item_path %>
+<% end %>

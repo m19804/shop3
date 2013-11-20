@@ -1,0 +1,52 @@
+<h1>Корзина</h1>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th></th>
+      </tr>
+  </thead>
+
+  <tbody>
+    <% @item_users.each do |item_user| %>
+      <tr>
+        <td><%= item_user.item.name %></td>
+
+        <td>
+          <%= simple_form_for item_user do |f| %>
+          <%= f.input :quantity, label: false, input_html: {class: "input-mini pull-left"} %>
+          <%= f.submit ">"  %>
+         <%end%>
+        </td>
+
+        <td><%= item_user.full_price %> руб.</td>
+        <td><%= link_to 'Destroy', item_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+
+
+<tfoot>
+<tr>
+  <th>Полная сумма</th>
+  <th></th>
+  <th>
+     <%= ItemUser.total_price current_user %> руб.
+   </th>
+
+  </th></th>
+</tr>
+</tfoot>
+</table>
+<% if @item_users.any? %>
+<p>
+  <%= link_to "Оформить заказ", orders_path, method: :post, class: "btn btn-success btn-large" %>
+
+
+</p>
+
+ <% end %>

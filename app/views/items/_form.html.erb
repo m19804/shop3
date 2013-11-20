@@ -1,0 +1,17 @@
+<%= simple_form_for(@item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :raiting %>
+    <%= f.input :price %>
+    <%= f.input :name %>
+    <%= f.input :category_id, collection: Category.all %>
+    <%= f.input :special %>
+    <%= f.input :photo %>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn" %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<h1>категории</h1>
+
+<table class="table">
+
+
+
+<% @categories.each do |category| %>
+
+      <% if category.items.any? %>
+
+
+        <tr>
+
+       <td><%= link_to category.name, category %></td>
+       <% if signed_in? %>
+       <td><%= link_to "Редактировать", edit_category_path(category) %></td>
+       <td><%= link_to "Уничтожить", category, method: :delete, confirm: "Точно удалить" %></td>
+        <% end %>
+      </tr>
+
+    <% end  %>
+
+  <% end  %>
+
+
+</table>
+
+<% if signed_in? %>
+
+<%= link_to "Создать новую категорию", new_category_path, class: "btn" %>
+<% end %>

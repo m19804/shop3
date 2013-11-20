@@ -1,0 +1,15 @@
+<h1>что-нибудь</h1>
+<%= link_to "Создать пост", new_post_path%>
+
+
+  <% @posts.each do |p| %>
+
+      <h2><%= link_to p.title, p %></h2>
+      <p><%= p.description %></p>
+
+    <p><%=link_to "Редактировать", edit_post_path(p) %></p>
+    <p><%=link_to "Удалить", p, method: :delete, confirm: "Точно?" %></p>
+
+
+
+<% end %>
