@@ -5,12 +5,10 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
-
   end
 
   def new
     @category = Category.new
-
   end
 
   def create
@@ -51,14 +49,10 @@ class CategoriesController < ApplicationController
 
     #  вернуться на список категорий
     redirect_to categories_path
-
-
   end
 
   def show
-
     @category = Category.find params[:id]
-
   end
 
 
